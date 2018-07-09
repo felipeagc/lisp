@@ -1,0 +1,5 @@
+* Interpretador de Lisp
+*** Como compilar
+#+BEGIN_SRC shell
+gcc src/*.c -lm
+#+END_SRC
