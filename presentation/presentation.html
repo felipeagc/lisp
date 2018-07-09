@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title></title>
+<meta name="author" content="(Felipe)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/reveal.js/3.0.0/css/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/reveal.js/3.0.0/css/theme/moon.css" id="theme"/>
+
+<link rel="stylesheet" href="custom.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/reveal.js/3.0.0/lib/css/zenburn.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/reveal.js/3.0.0/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<section>
+<section id="slide-orgfd490dd">
+<h2 id="orgfd490dd">Interpretador de Lisp</h2>
+</section>
+</section>
+<section>
+<section id="slide-orgd08aa5e">
+<h2 id="orgd08aa5e">Lisp</h2>
+<p>
+Lisp é uma família de linguagens de programação concebida por John McCarthy em 1958.
+</p>
+</section>
+</section>
+<section>
+<section id="slide-orgbc011ad">
+<h2 id="orgbc011ad">Sintaxe</h2>
+<div class="org-src-container">
+
+<pre><code class="lisp" >(funcao param1 param2 ...)
+</code></pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orge27cb66">
+<h2 id="orge27cb66">Exemplo: operações básicas</h2>
+<div class="org-src-container">
+
+<pre><code class="lisp" >(+ 1 2 3) => 6.0
+(- 3 1) => 2.0
+(* 2 3) => 6.0
+(/ 15 3) => 5.0
+</code></pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org7d1620e">
+<h2 id="org7d1620e">Exemplo: variaveis</h2>
+<div class="org-src-container">
+
+<pre><code class="lisp" >(set x 2)
+
+x => 2.0
+
+(* x 3) => 6.0
+</code></pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org4f1af46">
+<h2 id="org4f1af46">Exemplo: if</h2>
+<div class="org-src-container">
+
+<pre><code class="lisp" >(if cond vardadeiro falso)
+</code></pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org151585a">
+<h2 id="org151585a">Exemplo: if</h2>
+<div class="org-src-container">
+
+<pre><code class="lisp" >(if (< 1 2)
+  (+ 1 2)
+  (- 1 2)) => 3.0
+</code></pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org1f90886">
+<h2 id="org1f90886">Exemplo: if</h2>
+<div class="org-src-container">
+
+<pre><code class="lisp" >(if (not (< 1 2))
+  (+ 1 2)
+  (- 1 2)) => -1.0
+</code></pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org903e98b">
+<h2 id="org903e98b">Exemplo: definição de funções</h2>
+<div class="org-src-container">
+
+<pre><code class="lisp" >(set add1 (fun (n) (+ 1 n)))
+
+(add1 4) => 5.0
+</code></pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org47fc490">
+<h2 id="org47fc490">Exemplo: definição de funções</h2>
+<div class="org-src-container">
+
+<pre><code class="lisp" >(defun add1 (n) (+ 1 n))
+
+(add1 4) => 5.0
+</code></pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org7ae1386">
+<h2 id="org7ae1386">Exemplo: fatorial</h2>
+<div class="org-src-container">
+
+<pre><code class="lisp" >(defun fat (n)
+  (if (= n 1)
+    1
+    (* n (fat (- n 1)))))
+
+(fat 5) => 120.0
+</code></pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org045be79">
+<h2 id="org045be79">Exemplo: sequência de operações</h2>
+<div class="org-src-container">
+
+<pre><code class="lisp" >(progn
+  (set a 1.0)
+  (set b 2.0)
+  (+ a b)) => 3.0
+</code></pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgbad9bee">
+<h2 id="orgbad9bee">Funções pré-definidas</h2>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><code>+</code></td>
+<td class="org-left"><code>&lt;</code></td>
+<td class="org-left"><code>if</code></td>
+<td class="org-left"><code>sin</code></td>
+<td class="org-left"><code>deg</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>-</code></td>
+<td class="org-left"><code>&lt;=</code></td>
+<td class="org-left"><code>not</code></td>
+<td class="org-left"><code>cos</code></td>
+<td class="org-left"><code>rad</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>*</code></td>
+<td class="org-left"><code>&gt;</code></td>
+<td class="org-left"><code>set</code></td>
+<td class="org-left"><code>tan</code></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>/</code></td>
+<td class="org-left"><code>&gt;=</code></td>
+<td class="org-left"><code>fun</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><code>=</code></td>
+<td class="org-left"><code>defun</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><code>progn</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><code>print</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/reveal.js/3.0.0/lib/js/head.min.js"></script>
+<script src="https://cdn.jsdelivr.net/reveal.js/3.0.0/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }]
+});
+</script>
+</body>
+</html>

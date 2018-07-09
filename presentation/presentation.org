@@ -1,0 +1,81 @@
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/reveal.js/3.0.0/
+#+REVEAL_PLUGINS: (highlight)
+#+REVEAL_EXTRA_CSS: custom.css
+#+OPTIONS: reveal_title_slide:nil
+#+OPTIONS: toc:nil
+#+OPTIONS: num:nil
+
+* Interpretador de Lisp
+* Lisp
+Lisp é uma família de linguagens de programação concebida por John McCarthy em 1958.
+* Sintaxe
+#+BEGIN_SRC lisp
+  (funcao param1 param2 ...)
+#+END_SRC
+* Exemplo: operações básicas
+#+BEGIN_SRC lisp
+  (+ 1 2 3) => 6.0
+  (- 3 1) => 2.0
+  (* 2 3) => 6.0
+  (/ 15 3) => 5.0
+#+END_SRC
+* Exemplo: variaveis
+#+BEGIN_SRC lisp
+  (set x 2)
+
+  x => 2.0
+
+  (* x 3) => 6.0
+#+END_SRC
+* Exemplo: if
+#+BEGIN_SRC lisp
+  (if cond vardadeiro falso)
+#+END_SRC
+* Exemplo: if
+#+BEGIN_SRC lisp
+  (if (< 1 2)
+    (+ 1 2)
+    (- 1 2)) => 3.0
+#+END_SRC
+* Exemplo: if
+#+BEGIN_SRC lisp
+  (if (not (< 1 2))
+    (+ 1 2)
+    (- 1 2)) => -1.0
+#+END_SRC
+* Exemplo: definição de funções
+#+BEGIN_SRC lisp
+  (set add1 (fun (n) (+ 1 n)))
+
+  (add1 4) => 5.0
+#+END_SRC
+* Exemplo: definição de funções
+#+BEGIN_SRC lisp
+  (defun add1 (n) (+ 1 n))
+
+  (add1 4) => 5.0
+#+END_SRC
+* Exemplo: fatorial
+#+BEGIN_SRC lisp
+  (defun fat (n)
+    (if (= n 1)
+      1
+      (* n (fat (- n 1)))))
+
+  (fat 5) => 120.0
+#+END_SRC
+* Exemplo: sequência de operações
+#+BEGIN_SRC lisp
+  (progn
+    (set a 1.0)
+    (set b 2.0)
+    (+ a b)) => 3.0
+#+END_SRC
+* Funções pré-definidas
+| =+= | =<=  | =if=    | =sin= | =deg= |
+| =-= | =<== | =not=   | =cos= | =rad= |
+| =*= | =>=  | =set=   | =tan= |       |
+| =/= | =>== | =fun=   |       |       |
+|     | ===  | =defun= |       |       |
+|     |      | =progn= |       |       |
+|     |      | =print= |       |       |
